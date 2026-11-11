@@ -1,4 +1,9 @@
 import { MotionEnhancements } from "./motion-enhancements";
+import { AwwwardsCursor } from "./components/awwwards-cursor";
+import { ScrollHUD } from "./components/scroll-hud";
+import { InteractiveHeroCanvas } from "./components/interactive-canvas";
+import { Marquee } from "./components/marquee";
+import { ProjectShowcase } from "./components/project-showcase";
 
 const cvUrl =
   "https://portfolio-alvin.vercel.app/Frontend_Web%20Developer_Alvin%20Irwanto.pdf";
@@ -101,108 +106,6 @@ const certifications = [
   },
 ];
 
-const featuredProjects = [
-  {
-    name: "Portal",
-    description:
-      "An integrated gateway to connected company applications. It manages authentication, password recovery, and role-based access to internal tools.",
-    stack: ["React.js", "Tailwind CSS", "Zustand"],
-  },
-  {
-    name: "Culture Activation Program",
-    description:
-      "An internal program supporting PNM’s business and culture initiatives across its branches, with dashboards, monthly reporting, approvals, and user and branch management.",
-    stack: ["React.js", "Tailwind CSS", "Zustand"],
-  },
-  {
-    name: "AO Onboarding",
-    description:
-      "A role-based application for monitoring internship activities, including attendance, activity logs, intern lists, dashboards, and user management.",
-    stack: ["React.js", "Tailwind CSS", "Zustand"],
-  },
-  {
-    name: "IFest",
-    description:
-      "An employee innovation program inviting PNM teams to develop ideas that improve competitiveness and efficiency in the ultra-micro industry and Indonesia’s digital ecosystem.",
-    stack: ["React.js", "Tailwind CSS", "Zustand"],
-  },
-  {
-    name: "EMS",
-    description:
-      "A web application for submitting, approving, and managing events, including preparation and accountability reporting.",
-    stack: ["React.js", "Tailwind CSS", "Zustand"],
-  },
-  {
-    name: "ITMS",
-    description:
-      "A promotion management application for candidate nominations, employee evaluations, and supervisor assessments within career development pathways.",
-    stack: ["React.js", "Tailwind CSS", "Zustand"],
-  },
-  {
-    name: "Kegiatan Simulasi Bisnis (PKM)",
-    description:
-      "A business process simulation application for tracking attendance, activities, work targets, and approvals for PKM employees.",
-    stack: ["React.js", "Tailwind CSS", "Zustand"],
-  },
-  {
-    name: "Beasiswa",
-    description:
-      "A scholarship application focused on managing employee, university, and registration-period master data.",
-    stack: ["React.js", "Tailwind CSS", "Zustand"],
-  },
-  {
-    name: "Pangkalan Data Universitas Mercu Buana",
-    description:
-      "A university data resource with authentication, role-based access, and embedded Power BI reporting.",
-    stack: ["MongoDB", "Express.js", "React.js", "Node.js", "Redux"],
-    url: "https://pd.mercubuana.ac.id/",
-  },
-  {
-    name: "UMB Career & Alumni",
-    description:
-      "A university alumni website sharing job vacancies, events, and campus programs. Alvin contributed as a frontend developer.",
-    stack: ["React.js", "React Bootstrap", "Material UI", "Axios", "React Hook Form"],
-    url: "https://umbcan.mercubuana.ac.id/",
-  },
-  {
-    name: "Portfolio Website MX Solution",
-    description:
-      "A product website for MX Solution, with product and collaboration information, articles, a client assessment, and an administration area.",
-    stack: [
-      "Next.js",
-      "React.js",
-      "Zustand",
-      "Tailwind CSS",
-      "Framer Motion",
-      "React Hook Form",
-      "Prisma",
-      "MySQL",
-    ],
-    url: "https://mxindonesia.com/",
-  },
-];
-
-const otherProjects = [
-  {
-    name: "Portfolio Website Jakarta Creative Hub",
-    description:
-      "A public website promoting Jakarta Creative Hub, its events, facilities, and articles.",
-    stack: ["WordPress", "CSS"],
-  },
-  {
-    name: "Furniture Website from Figma Design",
-    description:
-      "A frontend practice project recreating a furniture website design by AR Shakir.",
-    stack: ["React.js", "Vite", "Tailwind CSS"],
-  },
-  {
-    name: "YouTube Clone",
-    description:
-      "A YouTube-style application built to practice API integration and frontend development.",
-    stack: ["React.js", "Vite", "RapidAPI", "Axios", "Tailwind CSS"],
-  },
-];
-
 function SectionLabel({ number, children }: { number: string; children: React.ReactNode }) {
   return (
     <div className="section-label" data-reveal>
@@ -212,17 +115,14 @@ function SectionLabel({ number, children }: { number: string; children: React.Re
   );
 }
 
-function Stack({ items }: { items: string[] }) {
-  return (
-    <ul className="stack" aria-label="Technologies">
-      {items.map((item) => <li key={item}>{item}</li>)}
-    </ul>
-  );
-}
-
 export default function Home() {
   return (
     <>
+      <AwwwardsCursor />
+      <ScrollHUD />
+      <MotionEnhancements />
+
+      {/* 1. Navbar: exact original layout */}
       <header className="site-header">
         <a className="wordmark" href="#top" aria-label="Alvin Irwanto, home">
           <span className="wordmark-mark" aria-hidden="true">AI</span>
@@ -240,7 +140,7 @@ export default function Home() {
       </header>
 
       <main id="top">
-        <MotionEnhancements />
+        {/* Hero Section */}
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-left">
             <div className="hero-intro" data-intro>
@@ -249,7 +149,7 @@ export default function Home() {
               <p>Interfaces shaped around useful details, clear design, and performance.</p>
             </div>
             <div className="hero-count" data-intro>
-              <strong>{featuredProjects.length + otherProjects.length}</strong>
+              <strong>14</strong>
               <span>projects in this portfolio</span>
             </div>
             <div className="hero-left-bottom">
@@ -259,13 +159,10 @@ export default function Home() {
           </div>
 
           <div className="hero-center">
-            <div className="hero-center-meta"><span>Personal portfolio · 2026</span></div>
-            <div className="hero-art" aria-hidden="true">
-              <span className="hero-monogram">AI</span>
-              <span className="hero-orbit hero-orbit-one" />
-              <span className="hero-orbit hero-orbit-two" />
-              <span className="hero-orange-dot" />
+            <div className="hero-center-meta">
+              <span>Personal portfolio · 2026</span>
             </div>
+            <InteractiveHeroCanvas />
             <div className="hero-name" data-intro>
               <h1 id="hero-title">Alvin<br />Irwanto<span>.</span></h1>
               <p>Frontend Web Developer <span>·</span> UI/UX Design</p>
@@ -274,7 +171,10 @@ export default function Home() {
           </div>
 
           <aside className="hero-feature" aria-label="Featured project">
-            <div className="feature-nav"><span>Selected work</span><span>{featuredProjects.length} / {featuredProjects.length + otherProjects.length}</span></div>
+            <div className="feature-nav">
+              <span>Selected work</span>
+              <span>01 / 14</span>
+            </div>
             <div className="feature-art" data-intro aria-hidden="true">
               <span className="feature-art-mark">MX</span>
               <span className="feature-art-ring" />
@@ -289,6 +189,10 @@ export default function Home() {
           </aside>
         </section>
 
+        {/* Kinetic Marquee Ticker */}
+        <Marquee speed={32} />
+
+        {/* Section 01: About */}
         <section className="content-section about-section page-grid" id="about">
           <SectionLabel number="01">About</SectionLabel>
           <div className="section-content about-content">
@@ -298,13 +202,14 @@ export default function Home() {
               <div>
                 <h3>Technologies I work with</h3>
                 <ul className="skill-list">
-                  {skills.map((skill) => <li data-reveal key={skill}>{skill}</li>)}
+                  {skills.map((skill) => <li key={skill}>{skill}</li>)}
                 </ul>
               </div>
             </div>
           </div>
         </section>
 
+        {/* 3. Section 02: Experience - Original timeline structure so it NEVER disappears */}
         <section className="content-section experience-section page-grid" id="experience">
           <SectionLabel number="02">Experience</SectionLabel>
           <div className="section-content">
@@ -342,36 +247,16 @@ export default function Home() {
           </div>
         </section>
 
+        {/* 2. Section 03: Selected Work with robust Grid / Index view */}
         <section className="content-section work-section page-grid" id="work">
           <SectionLabel number="03">Selected work</SectionLabel>
           <div className="section-content">
             <p className="section-lede work-intro" data-reveal>Web applications and websites built with teams across business, education, and creative work.</p>
-            <div className="project-grid">
-              {featuredProjects.map((project, index) => (
-                <article className="project-card" data-reveal key={project.name}>
-                  <div className="project-topline"><span>0{index + 1}</span></div>
-                  <h3>{project.name}</h3>
-                  <p>{project.description}</p>
-                  <Stack items={project.stack} />
-                  {project.url && <a className="project-link" href={project.url} target="_blank" rel="noreferrer">Visit project</a>}
-                </article>
-              ))}
-            </div>
-            <div className="other-work">
-              <h3 data-reveal>Other projects</h3>
-              <div className="other-project-grid">
-                {otherProjects.map((project) => (
-                  <article className="other-project" data-reveal key={project.name}>
-                    <h4>{project.name}</h4>
-                    <p>{project.description}</p>
-                    <Stack items={project.stack} />
-                  </article>
-                ))}
-              </div>
-            </div>
+            <ProjectShowcase />
           </div>
         </section>
 
+        {/* 1. Section 04: Contact - exact original layout */}
         <section className="contact-section page-grid" id="contact">
           <SectionLabel number="04">Contact</SectionLabel>
           <div className="section-content contact-content">
